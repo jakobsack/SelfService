@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WcfService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:52465/SelfService/Wcf?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:52465/SelfService/Wcf?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:52465/SelfService/Wcf?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" />
+      <xsd:import schemaLocation="http://localhost:52465/SelfService/Wcf?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IWcf_GetRegistry_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRegistry" />
+  </wsdl:message>
+  <wsdl:message name="IWcf_GetRegistry_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRegistryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWcf_GetQueues_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQueues" />
+  </wsdl:message>
+  <wsdl:message name="IWcf_GetQueues_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQueuesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWcf_GetQueueMessageList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQueueMessageList" />
+  </wsdl:message>
+  <wsdl:message name="IWcf_GetQueueMessageList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQueueMessageListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWcf_GetQueueMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQueueMessage" />
+  </wsdl:message>
+  <wsdl:message name="IWcf_GetQueueMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQueueMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWcf_GetFileSources_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileSources" />
+  </wsdl:message>
+  <wsdl:message name="IWcf_GetFileSources_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileSourcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWcf_GetFolder_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFolder" />
+  </wsdl:message>
+  <wsdl:message name="IWcf_GetFolder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFolderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWcf_DownloadFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:DownloadFile" />
+  </wsdl:message>
+  <wsdl:message name="IWcf_DownloadFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DownloadFileResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IWcf">
+    <wsdl:operation name="GetRegistry">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWcf/GetRegistry" message="tns:IWcf_GetRegistry_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWcf/GetRegistryResponse" message="tns:IWcf_GetRegistry_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQueues">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWcf/GetQueues" message="tns:IWcf_GetQueues_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWcf/GetQueuesResponse" message="tns:IWcf_GetQueues_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQueueMessageList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWcf/GetQueueMessageList" message="tns:IWcf_GetQueueMessageList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWcf/GetQueueMessageListResponse" message="tns:IWcf_GetQueueMessageList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQueueMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWcf/GetQueueMessage" message="tns:IWcf_GetQueueMessage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWcf/GetQueueMessageResponse" message="tns:IWcf_GetQueueMessage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileSources">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWcf/GetFileSources" message="tns:IWcf_GetFileSources_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWcf/GetFileSourcesResponse" message="tns:IWcf_GetFileSources_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFolder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWcf/GetFolder" message="tns:IWcf_GetFolder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWcf/GetFolderResponse" message="tns:IWcf_GetFolder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWcf/DownloadFile" message="tns:IWcf_DownloadFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWcf/DownloadFileResponse" message="tns:IWcf_DownloadFile_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IWcf" type="tns:IWcf">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetRegistry">
+      <soap:operation soapAction="http://tempuri.org/IWcf/GetRegistry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQueues">
+      <soap:operation soapAction="http://tempuri.org/IWcf/GetQueues" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQueueMessageList">
+      <soap:operation soapAction="http://tempuri.org/IWcf/GetQueueMessageList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQueueMessage">
+      <soap:operation soapAction="http://tempuri.org/IWcf/GetQueueMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileSources">
+      <soap:operation soapAction="http://tempuri.org/IWcf/GetFileSources" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFolder">
+      <soap:operation soapAction="http://tempuri.org/IWcf/GetFolder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadFile">
+      <soap:operation soapAction="http://tempuri.org/IWcf/DownloadFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WcfService">
+    <wsdl:port name="BasicHttpBinding_IWcf" binding="tns:BasicHttpBinding_IWcf">
+      <soap:address location="http://localhost:52465/SelfService/Wcf" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

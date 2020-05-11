@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52465/SelfService/Wcf?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ResultOfArrayOfRegistryItem6C6I1B5o">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResultOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfRegistryItem" Namespace="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Data" nillable="true" type="tns:ArrayOfRegistryItem" />
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResultOfArrayOfRegistryItem6C6I1B5o" nillable="true" type="tns:ResultOfArrayOfRegistryItem6C6I1B5o" />
+  <xs:complexType name="ArrayOfRegistryItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RegistryItem" nillable="true" type="tns:RegistryItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRegistryItem" nillable="true" type="tns:ArrayOfRegistryItem" />
+  <xs:complexType name="RegistryItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="KeyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegistryItems" nillable="true" type="tns:ArrayOfRegistryItem" />
+      <xs:element minOccurs="0" name="RegistryValues" nillable="true" type="tns:ArrayOfRegistryValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegistryItem" nillable="true" type="tns:RegistryItem" />
+  <xs:complexType name="ArrayOfRegistryValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RegistryValue" nillable="true" type="tns:RegistryValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRegistryValue" nillable="true" type="tns:ArrayOfRegistryValue" />
+  <xs:complexType name="RegistryValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegistryValue" nillable="true" type="tns:RegistryValue" />
+  <xs:complexType name="ResultOfArrayOfQueue6C6I1B5o">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResultOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfQueue" Namespace="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Data" nillable="true" type="tns:ArrayOfQueue" />
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResultOfArrayOfQueue6C6I1B5o" nillable="true" type="tns:ResultOfArrayOfQueue6C6I1B5o" />
+  <xs:complexType name="ArrayOfQueue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Queue" nillable="true" type="tns:Queue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfQueue" nillable="true" type="tns:ArrayOfQueue" />
+  <xs:complexType name="Queue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Label" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Messages" type="xs:int" />
+      <xs:element minOccurs="0" name="Path" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Queue" nillable="true" type="tns:Queue" />
+  <xs:complexType name="ResultOfArrayOfQueueMessage6C6I1B5o">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResultOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfQueueMessage" Namespace="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Data" nillable="true" type="tns:ArrayOfQueueMessage" />
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResultOfArrayOfQueueMessage6C6I1B5o" nillable="true" type="tns:ResultOfArrayOfQueueMessage6C6I1B5o" />
+  <xs:complexType name="ArrayOfQueueMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="QueueMessage" nillable="true" type="tns:QueueMessage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfQueueMessage" nillable="true" type="tns:ArrayOfQueueMessage" />
+  <xs:complexType name="QueueMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Body" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Label" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SentTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Size" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="QueueMessage" nillable="true" type="tns:QueueMessage" />
+  <xs:complexType name="ResultOfQueueMessage6C6I1B5o">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResultOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="QueueMessage" Namespace="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Data" nillable="true" type="tns:QueueMessage" />
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResultOfQueueMessage6C6I1B5o" nillable="true" type="tns:ResultOfQueueMessage6C6I1B5o" />
+  <xs:complexType name="ResultOfArrayOfFileSource6C6I1B5o">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResultOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfFileSource" Namespace="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Data" nillable="true" type="tns:ArrayOfFileSource" />
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResultOfArrayOfFileSource6C6I1B5o" nillable="true" type="tns:ResultOfArrayOfFileSource6C6I1B5o" />
+  <xs:complexType name="ArrayOfFileSource">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FileSource" nillable="true" type="tns:FileSource" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFileSource" nillable="true" type="tns:ArrayOfFileSource" />
+  <xs:complexType name="FileSource">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Path" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FileSource" nillable="true" type="tns:FileSource" />
+  <xs:complexType name="ResultOfFolder6C6I1B5o">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResultOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Folder" Namespace="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Data" nillable="true" type="tns:Folder" />
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResultOfFolder6C6I1B5o" nillable="true" type="tns:ResultOfFolder6C6I1B5o" />
+  <xs:complexType name="Folder">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Files" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Folders" nillable="true" type="tns:ArrayOfFolder" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Folder" nillable="true" type="tns:Folder" />
+  <xs:complexType name="ArrayOfFolder">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Folder" nillable="true" type="tns:Folder" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFolder" nillable="true" type="tns:ArrayOfFolder" />
+  <xs:complexType name="ResultOfDownload6C6I1B5o">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResultOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Download" Namespace="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Data" nillable="true" type="tns:Download" />
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResultOfDownload6C6I1B5o" nillable="true" type="tns:ResultOfDownload6C6I1B5o" />
+  <xs:complexType name="Download">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Data" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Download" nillable="true" type="tns:Download" />
+</xs:schema>

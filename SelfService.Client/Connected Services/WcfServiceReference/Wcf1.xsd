@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52465/SelfService/Wcf?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" />
+  <xs:element name="GetRegistry">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRegistryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" minOccurs="0" name="GetRegistryResult" nillable="true" type="q1:ResultOfArrayOfRegistryItem6C6I1B5o" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQueues">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQueuesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" minOccurs="0" name="GetQueuesResult" nillable="true" type="q2:ResultOfArrayOfQueue6C6I1B5o" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQueueMessageList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="queueName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQueueMessageListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" minOccurs="0" name="GetQueueMessageListResult" nillable="true" type="q3:ResultOfArrayOfQueueMessage6C6I1B5o" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQueueMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="queueName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="messageId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQueueMessageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" minOccurs="0" name="GetQueueMessageResult" nillable="true" type="q4:ResultOfQueueMessage6C6I1B5o" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileSources">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileSourcesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" minOccurs="0" name="GetFileSourcesResult" nillable="true" type="q5:ResultOfArrayOfFileSource6C6I1B5o" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFolder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="path" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFolderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" minOccurs="0" name="GetFolderResult" nillable="true" type="q6:ResultOfFolder6C6I1B5o" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DownloadFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="path" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="offset" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DownloadFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" minOccurs="0" name="DownloadFileResult" nillable="true" type="q7:ResultOfDownload6C6I1B5o" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
