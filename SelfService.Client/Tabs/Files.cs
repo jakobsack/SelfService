@@ -38,6 +38,7 @@ namespace SelfService.Client.Tabs
             using (WcfClient client = Helper.GetWcfClient(Hostname))
             {
                 var result = client.GetFileSources();
+                form.SetStatusLabel(result.Success, result.Error);
                 if (result.Success)
                 {
                     FileSources = result.Data;
@@ -79,6 +80,7 @@ namespace SelfService.Client.Tabs
             using (WcfClient client = Helper.GetWcfClient(Hostname))
             {
                 var result = client.GetFolder(path);
+                form.SetStatusLabel(result.Success, result.Error);
                 if (result.Success)
                 {
                     Folder = result.Data;
@@ -174,6 +176,7 @@ namespace SelfService.Client.Tabs
             using (WcfClient client = Helper.GetWcfClient(Hostname))
             {
                 var result = client.DownloadFile(FilePath, position);
+                form.SetStatusLabel(result.Success, result.Error);
                 if (result.Success)
                 {
                     byte[] rawBytes = Convert.FromBase64String(result.Data.Data);
@@ -259,6 +262,10 @@ namespace SelfService.Client.Tabs
                         using (WcfClient client = Helper.GetWcfClient(hostname))
                         {
                             var result = client.DownloadFile(filePath, position);
+                            form.textBoxFile.Invoke((MethodInvoker)delegate {
+                                // Running on the UI thread
+                                form.SetStatusLabel(result.Success, result.Error);
+                            });
                             if (result.Success)
                             {
                                 byte[] rawBytes = Convert.FromBase64String(result.Data.Data);
@@ -272,8 +279,8 @@ namespace SelfService.Client.Tabs
                                 form.textBoxFile.Invoke((MethodInvoker)delegate {
                                     // Running on the UI thread
                                     form.textBoxFile.Text = "";
+                                    form.SetStatusLabel(result.Success, result.Error);
                                 });
-
                             }
                         }
 

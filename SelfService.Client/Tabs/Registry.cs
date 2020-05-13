@@ -25,10 +25,15 @@ namespace SelfService.Client.Tabs
             using (WcfClient client = Helper.GetWcfClient(hostname))
             {
                 var result = client.GetRegistry();
+                form.SetStatusLabel(result.Success, result.Error);
                 if (result.Success)
                 {
                     CurrentRegistry = result.Data;
                     FlatRegistry.Clear();
+                }
+                else
+                {
+                    CurrentRegistry = new RegistryItem[0];
                 }
             }
 

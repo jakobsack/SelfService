@@ -27,9 +27,14 @@ namespace SelfService.Client.Tabs
             using (WcfClient client = Helper.GetWcfClient(Hostname))
             {
                 var result = client.GetQueues();
+                form.SetStatusLabel(result.Success, result.Error);
                 if (result.Success)
                 {
                     Queues = result.Data;
+                }
+                else
+                {
+                    Queues = new Queue[0];
                 }
             }
 
@@ -55,6 +60,7 @@ namespace SelfService.Client.Tabs
             using (WcfClient client = Helper.GetWcfClient(Hostname))
             {
                 var result = client.GetQueueMessageList(Queue.Path);
+                form.SetStatusLabel(result.Success, result.Error);
                 if (result.Success)
                 {
                     Messages = result.Data;
@@ -82,6 +88,7 @@ namespace SelfService.Client.Tabs
             using (WcfClient client = Helper.GetWcfClient(Hostname))
             {
                 var result = client.GetQueueMessage(Queue.Path, message.Id);
+                form.SetStatusLabel(result.Success, result.Error);
                 if (result.Success)
                 {
                     fullMessage = result.Data;

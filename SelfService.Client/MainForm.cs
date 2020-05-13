@@ -18,6 +18,7 @@ namespace SelfService.Client
         private Msmq MsmqTab = null;
         private Registry RegistryTab = null;
         private Files FilesTab = null;
+        private List<string> LogMessages;
 
         public MainForm()
         {
@@ -148,6 +149,20 @@ namespace SelfService.Client
             string text = "SelfService has been written by Jakob Sack. You can find its source under https://github.com/jakobsack/SelfService";
             string caption = "About SelfService";
             MessageBox.Show(text, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        internal void SetStatusLabel(bool success, string error)
+        {
+            if (success)
+            {
+                toolStripStatusLabelStatus.Text = "Success";
+
+            }
+            else
+            {
+                toolStripStatusLabelStatus.Text = error;
+                LogMessages.Add(error);
+            }
         }
     }
 }
