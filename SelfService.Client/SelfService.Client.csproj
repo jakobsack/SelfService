@@ -68,6 +68,7 @@
     <Compile Include="Tabs\Files.cs" />
     <Compile Include="Tabs\Msmq.cs" />
     <Compile Include="Tabs\Registry.cs" />
+    <Compile Include="Tabs\Services.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -90,6 +91,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\WcfServiceReference\SelfService.Client.WcfServiceReference.ResultOfArrayOfRegistryItem6C6I1B5o.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WcfServiceReference\SelfService.Client.WcfServiceReference.ResultOfArrayOfServiceItem6C6I1B5o.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\WcfServiceReference\SelfService.Client.WcfServiceReference.ResultOfDownload6C6I1B5o.datasource">

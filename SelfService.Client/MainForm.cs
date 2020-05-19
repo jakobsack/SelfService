@@ -18,7 +18,8 @@ namespace SelfService.Client
         private Msmq MsmqTab = null;
         private Registry RegistryTab = null;
         private Files FilesTab = null;
-        private List<string> LogMessages;
+        private Services ServicesTab = null;
+        private List<string> LogMessages = new List<string>();
 
         public MainForm()
         {
@@ -36,6 +37,7 @@ namespace SelfService.Client
             MsmqTab = new Tabs.Msmq(this);
             RegistryTab = new Tabs.Registry(this);
             FilesTab = new Files(this);
+            ServicesTab = new Services(this);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -72,6 +74,10 @@ namespace SelfService.Client
             else if (tabControl1.SelectedTab == tabPageFiles)
             {
                 UpdateFilesPage();
+            }
+            else if (tabControl1.SelectedTab == tabPageServices)
+            {
+                UpdateServicesPage();
             }
         }
 
@@ -144,6 +150,14 @@ namespace SelfService.Client
         }
         #endregion
 
+        #region ServicesTab
+        private void UpdateServicesPage()
+        {
+            string hostname = listBoxMachines.SelectedItem.ToString();
+            ServicesTab.GetServices(hostname);
+        }
+        #endregion
+
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string text = "SelfService has been written by Jakob Sack. You can find its source under https://github.com/jakobsack/SelfService";
@@ -156,13 +170,29 @@ namespace SelfService.Client
             if (success)
             {
                 toolStripStatusLabelStatus.Text = "Success";
-
             }
             else
             {
-                toolStripStatusLabelStatus.Text = error;
+                string[] lines = error.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+                toolStripStatusLabelStatus.Text = lines.FirstOrDefault();
                 LogMessages.Add(error);
+                listBoxErrorMessages.Items.Add(DateTime.Now.ToString());
             }
+        }
+
+        private void toolStripStatusLabelStatus_Click(object sender, EventArgs e)
+        {
+            tabControl2.SelectedTab = tabPage2;
+        }
+
+        private void listBoxErrorMessages_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(listBoxErrorMessages.SelectedIndex == -1)
+            {
+                return;
+            }
+
+            textBoxErrorMessage.Text = LogMessages[listBoxErrorMessages.SelectedIndex];
         }
     }
 }

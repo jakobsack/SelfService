@@ -31,5 +31,8 @@ namespace SelfService.Daemon
 
         [OperationContract]
         Result<Download> DownloadFile(string path, long offset);
+
+        [OperationContract]
+        Result<List<ServiceItem>> GetServices();
     }
 }

@@ -57,11 +57,16 @@
     <Compile Include="Model\Download.cs" />
     <Compile Include="Model\FileSource.cs" />
     <Compile Include="Model\Folder.cs" />
+    <Compile Include="Model\ServiceItem.cs" />
     <Compile Include="Model\RegistryItem.cs" />
     <Compile Include="Model\QueueMessage.cs" />
     <Compile Include="Model\Queue.cs" />
     <Compile Include="Model\RegistryValue.cs" />
     <Compile Include="Model\Result.cs" />
+    <Compile Include="Provider\FileProvider.cs" />
+    <Compile Include="Provider\MsmqProvider.cs" />
+    <Compile Include="Provider\RegistryProvider.cs" />
+    <Compile Include="Provider\ServiceProvider.cs" />
     <Compile Include="WcfService.cs" />
     <Compile Include="WindowsService.cs">
       <SubType>Component</SubType>

@@ -50,6 +50,12 @@
   <wsdl:message name="IWcf_DownloadFile_OutputMessage">
     <wsdl:part name="parameters" element="tns:DownloadFileResponse" />
   </wsdl:message>
+  <wsdl:message name="IWcf_GetServices_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServices" />
+  </wsdl:message>
+  <wsdl:message name="IWcf_GetServices_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServicesResponse" />
+  </wsdl:message>
   <wsdl:portType name="IWcf">
     <wsdl:operation name="GetRegistry">
       <wsdl:input wsaw:Action="http://tempuri.org/IWcf/GetRegistry" message="tns:IWcf_GetRegistry_InputMessage" />
@@ -78,6 +84,10 @@
     <wsdl:operation name="DownloadFile">
       <wsdl:input wsaw:Action="http://tempuri.org/IWcf/DownloadFile" message="tns:IWcf_DownloadFile_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWcf/DownloadFileResponse" message="tns:IWcf_DownloadFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServices">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWcf/GetServices" message="tns:IWcf_GetServices_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWcf/GetServicesResponse" message="tns:IWcf_GetServices_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IWcf" type="tns:IWcf">
@@ -138,6 +148,15 @@
     </wsdl:operation>
     <wsdl:operation name="DownloadFile">
       <soap:operation soapAction="http://tempuri.org/IWcf/DownloadFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServices">
+      <soap:operation soapAction="http://tempuri.org/IWcf/GetServices" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

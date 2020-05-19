@@ -95,4 +95,16 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetServices">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServicesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model" minOccurs="0" name="GetServicesResult" nillable="true" type="q8:ResultOfArrayOfServiceItem6C6I1B5o" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

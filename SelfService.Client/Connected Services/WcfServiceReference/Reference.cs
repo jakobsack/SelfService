@@ -1059,6 +1059,160 @@ namespace SelfService.Client.WcfServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ResultOfArrayOfServiceItem6C6I1B5o", Namespace="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model")]
+    [System.SerializableAttribute()]
+    public partial class ResultOfArrayOfServiceItem6C6I1B5o : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SelfService.Client.WcfServiceReference.ServiceItem[] DataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ErrorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool SuccessField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SelfService.Client.WcfServiceReference.ServiceItem[] Data {
+            get {
+                return this.DataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DataField, value) != true)) {
+                    this.DataField = value;
+                    this.RaisePropertyChanged("Data");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Error {
+            get {
+                return this.ErrorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorField, value) != true)) {
+                    this.ErrorField = value;
+                    this.RaisePropertyChanged("Error");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Success {
+            get {
+                return this.SuccessField;
+            }
+            set {
+                if ((this.SuccessField.Equals(value) != true)) {
+                    this.SuccessField = value;
+                    this.RaisePropertyChanged("Success");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceItem", Namespace="http://schemas.datacontract.org/2004/07/SelfService.Daemon.Model")]
+    [System.SerializableAttribute()]
+    public partial class ServiceItem : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long MemoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long Memory {
+            get {
+                return this.MemoryField;
+            }
+            set {
+                if ((this.MemoryField.Equals(value) != true)) {
+                    this.MemoryField = value;
+                    this.RaisePropertyChanged("Memory");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WcfServiceReference.IWcf")]
     public interface IWcf {
@@ -1104,6 +1258,12 @@ namespace SelfService.Client.WcfServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcf/DownloadFile", ReplyAction="http://tempuri.org/IWcf/DownloadFileResponse")]
         System.Threading.Tasks.Task<SelfService.Client.WcfServiceReference.ResultOfDownload6C6I1B5o> DownloadFileAsync(string path, long offset);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcf/GetServices", ReplyAction="http://tempuri.org/IWcf/GetServicesResponse")]
+        SelfService.Client.WcfServiceReference.ResultOfArrayOfServiceItem6C6I1B5o GetServices();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcf/GetServices", ReplyAction="http://tempuri.org/IWcf/GetServicesResponse")]
+        System.Threading.Tasks.Task<SelfService.Client.WcfServiceReference.ResultOfArrayOfServiceItem6C6I1B5o> GetServicesAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1187,6 +1347,14 @@ namespace SelfService.Client.WcfServiceReference {
         
         public System.Threading.Tasks.Task<SelfService.Client.WcfServiceReference.ResultOfDownload6C6I1B5o> DownloadFileAsync(string path, long offset) {
             return base.Channel.DownloadFileAsync(path, offset);
+        }
+        
+        public SelfService.Client.WcfServiceReference.ResultOfArrayOfServiceItem6C6I1B5o GetServices() {
+            return base.Channel.GetServices();
+        }
+        
+        public System.Threading.Tasks.Task<SelfService.Client.WcfServiceReference.ResultOfArrayOfServiceItem6C6I1B5o> GetServicesAsync() {
+            return base.Channel.GetServicesAsync();
         }
     }
 }

@@ -75,7 +75,7 @@ namespace SelfService.Client.Tabs
             {
                 DataGridViewRow row = form.dataGridViewMessages.Rows[form.dataGridViewMessages.Rows.Add()];
                 row.Cells[0].Value = queueMessage.Label;
-                row.Cells[1].Value = queueMessage.Size;
+                row.Cells[1].Value = queueMessage.Size.ToHumanBytes();
                 row.Cells[2].Value = queueMessage.SentTime;
             }
         }

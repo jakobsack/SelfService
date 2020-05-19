@@ -28,13 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripSplitButtonIcon = new System.Windows.Forms.ToolStripSplitButton();
+            this.toolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.listBoxMachines = new System.Windows.Forms.ListBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -65,11 +71,19 @@
             this.buttonShow = new System.Windows.Forms.Button();
             this.buttonDownload = new System.Windows.Forms.Button();
             this.textBoxFile = new System.Windows.Forms.TextBox();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.toolStripSplitButtonIcon = new System.Windows.Forms.ToolStripSplitButton();
+            this.tabPageServices = new System.Windows.Forms.TabPage();
+            this.dataGridViewServices = new System.Windows.Forms.DataGridView();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.splitContainer7 = new System.Windows.Forms.SplitContainer();
+            this.listBoxErrorMessages = new System.Windows.Forms.ListBox();
+            this.textBoxErrorMessage = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -101,7 +115,13 @@
             this.splitContainer6.Panel1.SuspendLayout();
             this.splitContainer6.Panel2.SuspendLayout();
             this.splitContainer6.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
+            this.tabPageServices.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewServices)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).BeginInit();
+            this.splitContainer7.Panel1.SuspendLayout();
+            this.splitContainer7.Panel2.SuspendLayout();
+            this.splitContainer7.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -111,7 +131,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1334, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1415, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -126,7 +146,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -141,15 +161,65 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.aboutToolStripMenuItem.Text = "About ServiceDesk";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSplitButtonIcon,
+            this.toolStripStatusLabelStatus});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 795);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1415, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripSplitButtonIcon
+            // 
+            this.toolStripSplitButtonIcon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripSplitButtonIcon.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButtonIcon.Image")));
+            this.toolStripSplitButtonIcon.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSplitButtonIcon.Name = "toolStripSplitButtonIcon";
+            this.toolStripSplitButtonIcon.Size = new System.Drawing.Size(32, 20);
+            this.toolStripSplitButtonIcon.Text = "toolStripSplitButton1";
+            // 
+            // toolStripStatusLabelStatus
+            // 
+            this.toolStripStatusLabelStatus.Name = "toolStripStatusLabelStatus";
+            this.toolStripStatusLabelStatus.Size = new System.Drawing.Size(50, 17);
+            this.toolStripStatusLabelStatus.Text = "Hello :-)";
+            this.toolStripStatusLabelStatus.Click += new System.EventHandler(this.toolStripStatusLabelStatus_Click);
+            // 
+            // tabControl2
+            // 
+            this.tabControl2.Alignment = System.Windows.Forms.TabAlignment.Bottom;
+            this.tabControl2.Controls.Add(this.tabPage1);
+            this.tabControl2.Controls.Add(this.tabPage2);
+            this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl2.Location = new System.Drawing.Point(0, 24);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(1415, 771);
+            this.tabControl2.TabIndex = 3;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.splitContainer1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 4);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1407, 745);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Program";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 24);
+            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -160,9 +230,9 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
             this.splitContainer1.Panel2.Enabled = false;
-            this.splitContainer1.Size = new System.Drawing.Size(1334, 746);
+            this.splitContainer1.Size = new System.Drawing.Size(1401, 739);
             this.splitContainer1.SplitterDistance = 266;
-            this.splitContainer1.TabIndex = 1;
+            this.splitContainer1.TabIndex = 2;
             // 
             // listBoxMachines
             // 
@@ -170,7 +240,7 @@
             this.listBoxMachines.FormattingEnabled = true;
             this.listBoxMachines.Location = new System.Drawing.Point(0, 0);
             this.listBoxMachines.Name = "listBoxMachines";
-            this.listBoxMachines.Size = new System.Drawing.Size(266, 746);
+            this.listBoxMachines.Size = new System.Drawing.Size(266, 739);
             this.listBoxMachines.TabIndex = 0;
             this.listBoxMachines.SelectedIndexChanged += new System.EventHandler(this.listBoxMachines_SelectedIndexChanged);
             // 
@@ -179,11 +249,12 @@
             this.tabControl1.Controls.Add(this.tabPageMsmq);
             this.tabControl1.Controls.Add(this.tabPageRegistry);
             this.tabControl1.Controls.Add(this.tabPageFiles);
+            this.tabControl1.Controls.Add(this.tabPageServices);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1064, 746);
+            this.tabControl1.Size = new System.Drawing.Size(1131, 739);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -193,7 +264,7 @@
             this.tabPageMsmq.Location = new System.Drawing.Point(4, 22);
             this.tabPageMsmq.Name = "tabPageMsmq";
             this.tabPageMsmq.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMsmq.Size = new System.Drawing.Size(1056, 720);
+            this.tabPageMsmq.Size = new System.Drawing.Size(1123, 713);
             this.tabPageMsmq.TabIndex = 0;
             this.tabPageMsmq.Text = "MSMQ";
             this.tabPageMsmq.UseVisualStyleBackColor = true;
@@ -211,8 +282,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Size = new System.Drawing.Size(1050, 714);
-            this.splitContainer2.SplitterDistance = 350;
+            this.splitContainer2.Size = new System.Drawing.Size(1117, 707);
+            this.splitContainer2.SplitterDistance = 372;
             this.splitContainer2.TabIndex = 0;
             // 
             // dataGridViewQueues
@@ -225,7 +296,7 @@
             this.dataGridViewQueues.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewQueues.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewQueues.Name = "dataGridViewQueues";
-            this.dataGridViewQueues.Size = new System.Drawing.Size(350, 714);
+            this.dataGridViewQueues.Size = new System.Drawing.Size(372, 707);
             this.dataGridViewQueues.TabIndex = 0;
             this.dataGridViewQueues.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewQueues_CellContentClick);
             // 
@@ -254,8 +325,8 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.textBoxMessage);
-            this.splitContainer3.Size = new System.Drawing.Size(696, 714);
-            this.splitContainer3.SplitterDistance = 400;
+            this.splitContainer3.Size = new System.Drawing.Size(741, 707);
+            this.splitContainer3.SplitterDistance = 425;
             this.splitContainer3.TabIndex = 0;
             // 
             // dataGridViewMessages
@@ -269,7 +340,7 @@
             this.dataGridViewMessages.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewMessages.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewMessages.Name = "dataGridViewMessages";
-            this.dataGridViewMessages.Size = new System.Drawing.Size(400, 714);
+            this.dataGridViewMessages.Size = new System.Drawing.Size(425, 707);
             this.dataGridViewMessages.TabIndex = 0;
             this.dataGridViewMessages.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMessages_CellContentClick);
             // 
@@ -295,7 +366,7 @@
             this.textBoxMessage.Location = new System.Drawing.Point(0, 0);
             this.textBoxMessage.Multiline = true;
             this.textBoxMessage.Name = "textBoxMessage";
-            this.textBoxMessage.Size = new System.Drawing.Size(292, 714);
+            this.textBoxMessage.Size = new System.Drawing.Size(312, 707);
             this.textBoxMessage.TabIndex = 0;
             // 
             // tabPageRegistry
@@ -304,7 +375,7 @@
             this.tabPageRegistry.Location = new System.Drawing.Point(4, 22);
             this.tabPageRegistry.Name = "tabPageRegistry";
             this.tabPageRegistry.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRegistry.Size = new System.Drawing.Size(1056, 720);
+            this.tabPageRegistry.Size = new System.Drawing.Size(1123, 713);
             this.tabPageRegistry.TabIndex = 1;
             this.tabPageRegistry.Text = "Registry";
             this.tabPageRegistry.UseVisualStyleBackColor = true;
@@ -322,8 +393,8 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.dataGridViewRegistry);
-            this.splitContainer4.Size = new System.Drawing.Size(1050, 714);
-            this.splitContainer4.SplitterDistance = 350;
+            this.splitContainer4.Size = new System.Drawing.Size(1117, 707);
+            this.splitContainer4.SplitterDistance = 372;
             this.splitContainer4.TabIndex = 0;
             // 
             // treeViewRegistryKeys
@@ -331,7 +402,7 @@
             this.treeViewRegistryKeys.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeViewRegistryKeys.Location = new System.Drawing.Point(0, 0);
             this.treeViewRegistryKeys.Name = "treeViewRegistryKeys";
-            this.treeViewRegistryKeys.Size = new System.Drawing.Size(350, 714);
+            this.treeViewRegistryKeys.Size = new System.Drawing.Size(372, 707);
             this.treeViewRegistryKeys.TabIndex = 0;
             this.treeViewRegistryKeys.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewRegistryKeys_AfterSelect);
             // 
@@ -344,19 +415,19 @@
             this.Column1,
             this.Column2,
             this.Column3});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewRegistry.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewRegistry.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewRegistry.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewRegistry.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewRegistry.Name = "dataGridViewRegistry";
             this.dataGridViewRegistry.ReadOnly = true;
-            this.dataGridViewRegistry.Size = new System.Drawing.Size(696, 714);
+            this.dataGridViewRegistry.Size = new System.Drawing.Size(741, 707);
             this.dataGridViewRegistry.TabIndex = 0;
             // 
             // Column1
@@ -383,7 +454,7 @@
             this.tabPageFiles.Controls.Add(this.splitContainer5);
             this.tabPageFiles.Location = new System.Drawing.Point(4, 22);
             this.tabPageFiles.Name = "tabPageFiles";
-            this.tabPageFiles.Size = new System.Drawing.Size(1056, 720);
+            this.tabPageFiles.Size = new System.Drawing.Size(1123, 713);
             this.tabPageFiles.TabIndex = 2;
             this.tabPageFiles.Text = "Files";
             this.tabPageFiles.UseVisualStyleBackColor = true;
@@ -401,8 +472,8 @@
             // splitContainer5.Panel2
             // 
             this.splitContainer5.Panel2.Controls.Add(this.splitContainer6);
-            this.splitContainer5.Size = new System.Drawing.Size(1056, 720);
-            this.splitContainer5.SplitterDistance = 352;
+            this.splitContainer5.Size = new System.Drawing.Size(1123, 713);
+            this.splitContainer5.SplitterDistance = 374;
             this.splitContainer5.TabIndex = 0;
             // 
             // listBoxFileSources
@@ -411,7 +482,7 @@
             this.listBoxFileSources.FormattingEnabled = true;
             this.listBoxFileSources.Location = new System.Drawing.Point(0, 0);
             this.listBoxFileSources.Name = "listBoxFileSources";
-            this.listBoxFileSources.Size = new System.Drawing.Size(352, 720);
+            this.listBoxFileSources.Size = new System.Drawing.Size(374, 713);
             this.listBoxFileSources.TabIndex = 0;
             this.listBoxFileSources.SelectedIndexChanged += new System.EventHandler(this.listBoxFileSources_SelectedIndexChanged);
             // 
@@ -431,8 +502,8 @@
             this.splitContainer6.Panel2.Controls.Add(this.buttonShow);
             this.splitContainer6.Panel2.Controls.Add(this.buttonDownload);
             this.splitContainer6.Panel2.Controls.Add(this.textBoxFile);
-            this.splitContainer6.Size = new System.Drawing.Size(700, 720);
-            this.splitContainer6.SplitterDistance = 233;
+            this.splitContainer6.Size = new System.Drawing.Size(745, 713);
+            this.splitContainer6.SplitterDistance = 247;
             this.splitContainer6.TabIndex = 0;
             // 
             // treeViewFiles
@@ -440,7 +511,7 @@
             this.treeViewFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeViewFiles.Location = new System.Drawing.Point(0, 0);
             this.treeViewFiles.Name = "treeViewFiles";
-            this.treeViewFiles.Size = new System.Drawing.Size(233, 720);
+            this.treeViewFiles.Size = new System.Drawing.Size(247, 713);
             this.treeViewFiles.TabIndex = 0;
             this.treeViewFiles.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewFiles_AfterSelect);
             // 
@@ -477,51 +548,123 @@
             // textBoxFile
             // 
             this.textBoxFile.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textBoxFile.Location = new System.Drawing.Point(0, 44);
+            this.textBoxFile.Location = new System.Drawing.Point(0, 37);
             this.textBoxFile.Multiline = true;
             this.textBoxFile.Name = "textBoxFile";
-            this.textBoxFile.Size = new System.Drawing.Size(463, 676);
+            this.textBoxFile.Size = new System.Drawing.Size(494, 676);
             this.textBoxFile.TabIndex = 0;
             // 
-            // statusStrip1
+            // tabPageServices
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSplitButtonIcon,
-            this.toolStripStatusLabelStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 748);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1334, 22);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
+            this.tabPageServices.Controls.Add(this.dataGridViewServices);
+            this.tabPageServices.Location = new System.Drawing.Point(4, 22);
+            this.tabPageServices.Name = "tabPageServices";
+            this.tabPageServices.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageServices.Size = new System.Drawing.Size(1123, 713);
+            this.tabPageServices.TabIndex = 3;
+            this.tabPageServices.Text = "Services";
+            this.tabPageServices.UseVisualStyleBackColor = true;
             // 
-            // toolStripStatusLabelStatus
+            // dataGridViewServices
             // 
-            this.toolStripStatusLabelStatus.Name = "toolStripStatusLabelStatus";
-            this.toolStripStatusLabelStatus.Size = new System.Drawing.Size(118, 17);
-            this.toolStripStatusLabelStatus.Text = "toolStripStatusLabel1";
+            this.dataGridViewServices.AllowUserToAddRows = false;
+            this.dataGridViewServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column4,
+            this.Column5,
+            this.Column6});
+            this.dataGridViewServices.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewServices.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewServices.Name = "dataGridViewServices";
+            this.dataGridViewServices.Size = new System.Drawing.Size(1117, 707);
+            this.dataGridViewServices.TabIndex = 0;
             // 
-            // toolStripSplitButtonIcon
+            // Column4
             // 
-            this.toolStripSplitButtonIcon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripSplitButtonIcon.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButtonIcon.Image")));
-            this.toolStripSplitButtonIcon.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButtonIcon.Name = "toolStripSplitButtonIcon";
-            this.toolStripSplitButtonIcon.Size = new System.Drawing.Size(32, 20);
-            this.toolStripSplitButtonIcon.Text = "toolStripSplitButton1";
+            this.Column4.HeaderText = "Service";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Status";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Memory";
+            this.Column6.Name = "Column6";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.splitContainer7);
+            this.tabPage2.Location = new System.Drawing.Point(4, 4);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1407, 745);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Debug";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer7
+            // 
+            this.splitContainer7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer7.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer7.Name = "splitContainer7";
+            // 
+            // splitContainer7.Panel1
+            // 
+            this.splitContainer7.Panel1.Controls.Add(this.listBoxErrorMessages);
+            // 
+            // splitContainer7.Panel2
+            // 
+            this.splitContainer7.Panel2.Controls.Add(this.textBoxErrorMessage);
+            this.splitContainer7.Size = new System.Drawing.Size(1401, 739);
+            this.splitContainer7.SplitterDistance = 467;
+            this.splitContainer7.TabIndex = 0;
+            // 
+            // listBoxErrorMessages
+            // 
+            this.listBoxErrorMessages.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxErrorMessages.FormattingEnabled = true;
+            this.listBoxErrorMessages.Location = new System.Drawing.Point(0, 0);
+            this.listBoxErrorMessages.Name = "listBoxErrorMessages";
+            this.listBoxErrorMessages.Size = new System.Drawing.Size(467, 739);
+            this.listBoxErrorMessages.TabIndex = 0;
+            this.listBoxErrorMessages.SelectedIndexChanged += new System.EventHandler(this.listBoxErrorMessages_SelectedIndexChanged);
+            // 
+            // textBoxErrorMessage
+            // 
+            this.textBoxErrorMessage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxErrorMessage.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxErrorMessage.Location = new System.Drawing.Point(0, 0);
+            this.textBoxErrorMessage.Multiline = true;
+            this.textBoxErrorMessage.Name = "textBoxErrorMessage";
+            this.textBoxErrorMessage.ReadOnly = true;
+            this.textBoxErrorMessage.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxErrorMessage.Size = new System.Drawing.Size(930, 739);
+            this.textBoxErrorMessage.TabIndex = 0;
+            this.textBoxErrorMessage.WordWrap = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1334, 770);
+            this.ClientSize = new System.Drawing.Size(1415, 817);
+            this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SelfService";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -555,8 +698,14 @@
             this.splitContainer6.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).EndInit();
             this.splitContainer6.ResumeLayout(false);
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.tabPageServices.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewServices)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.splitContainer7.Panel1.ResumeLayout(false);
+            this.splitContainer7.Panel2.ResumeLayout(false);
+            this.splitContainer7.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).EndInit();
+            this.splitContainer7.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -567,42 +716,53 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.ListBox listBoxMachines;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPageMsmq;
-        private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.SplitContainer splitContainer3;
-        private System.Windows.Forms.TabPage tabPageRegistry;
-        private System.Windows.Forms.SplitContainer splitContainer4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        internal System.Windows.Forms.DataGridView dataGridViewQueues;
-        internal System.Windows.Forms.DataGridView dataGridViewMessages;
-        internal System.Windows.Forms.TextBox textBoxMessage;
-        internal System.Windows.Forms.TreeView treeViewRegistryKeys;
-        internal System.Windows.Forms.DataGridView dataGridViewRegistry;
-        private System.Windows.Forms.TabPage tabPageFiles;
-        private System.Windows.Forms.SplitContainer splitContainer5;
-        private System.Windows.Forms.SplitContainer splitContainer6;
-        internal System.Windows.Forms.ListBox listBoxFileSources;
-        internal System.Windows.Forms.TreeView treeViewFiles;
-        internal System.Windows.Forms.Button buttonTail;
-        internal System.Windows.Forms.Button buttonShow;
-        internal System.Windows.Forms.Button buttonDownload;
-        internal System.Windows.Forms.TextBox textBoxFile;
         private System.Windows.Forms.StatusStrip statusStrip1;
         internal System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelStatus;
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButtonIcon;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.ListBox listBoxMachines;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPageMsmq;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        internal System.Windows.Forms.DataGridView dataGridViewQueues;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        internal System.Windows.Forms.DataGridView dataGridViewMessages;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        internal System.Windows.Forms.TextBox textBoxMessage;
+        private System.Windows.Forms.TabPage tabPageRegistry;
+        private System.Windows.Forms.SplitContainer splitContainer4;
+        internal System.Windows.Forms.TreeView treeViewRegistryKeys;
+        internal System.Windows.Forms.DataGridView dataGridViewRegistry;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.TabPage tabPageFiles;
+        private System.Windows.Forms.SplitContainer splitContainer5;
+        internal System.Windows.Forms.ListBox listBoxFileSources;
+        private System.Windows.Forms.SplitContainer splitContainer6;
+        internal System.Windows.Forms.TreeView treeViewFiles;
+        internal System.Windows.Forms.Button buttonTail;
+        internal System.Windows.Forms.Button buttonShow;
+        internal System.Windows.Forms.Button buttonDownload;
+        internal System.Windows.Forms.TextBox textBoxFile;
+        private System.Windows.Forms.TabPage tabPageServices;
+        internal System.Windows.Forms.DataGridView dataGridViewServices;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.SplitContainer splitContainer7;
+        private System.Windows.Forms.ListBox listBoxErrorMessages;
+        private System.Windows.Forms.TextBox textBoxErrorMessage;
     }
 }
 
