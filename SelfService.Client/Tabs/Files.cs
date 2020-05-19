@@ -194,7 +194,9 @@ namespace SelfService.Client.Tabs
             form.textBoxFile.Text = "";
             if (FileList.Contains(path))
             {
+                StopTailTask();
                 FilePath = path;
+                form.textBoxFile.Text = "";
                 form.buttonDownload.Enabled = true;
                 form.buttonShow.Enabled = true;
                 form.buttonTail.Enabled = true;

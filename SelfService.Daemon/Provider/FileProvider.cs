@@ -138,7 +138,7 @@ namespace SelfService.Daemon.Provider
                 {
                     using (FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete, 65536, FileOptions.SequentialScan))
                     {
-                        if (fileStream.Length <= offset)
+                        if (fileStream.Length < offset)
                         {
                             throw new Exception("Fils is smaller than offset.");
                         }

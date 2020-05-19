@@ -90,6 +90,11 @@ namespace SelfService.Client
 
         private void listBoxFileSources_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if(listBoxFileSources.SelectedIndex == -1)
+            {
+                return;
+            }
+
             string path = listBoxFileSources.SelectedItem.ToString();
             FilesTab.GetFolder(path);
         }
