@@ -52,7 +52,7 @@ namespace SelfService.Client.Tabs
             StopTailTask();
             form.listBoxFileSources.Items.Clear();
             form.treeViewFiles.Nodes.Clear();
-            form.textBoxFile.Text = "";
+            form.listBoxFile.Items.Clear();
             DisableButtons();
 
             foreach (FileSource fileSource in FileSources)
@@ -74,8 +74,9 @@ namespace SelfService.Client.Tabs
 
             StopTailTask();
             form.treeViewFiles.Nodes.Clear();
-            form.textBoxFile.Text = "";
+            form.listBoxFile.Items.Clear();
             DisableButtons();
+            Position = 0;
 
             using (WcfClient client = Helper.GetWcfClient(Hostname))
             {
@@ -153,7 +154,7 @@ namespace SelfService.Client.Tabs
             using (StreamReader reader = new StreamReader(zipStream, Encoding.UTF8, true))
             {
                 reader.Peek();
-                form.textBoxFile.Text = reader.ReadToEnd();
+                form.AddTextToListBoxFile(reader.ReadToEnd());
             }
         }
 
@@ -191,12 +192,12 @@ namespace SelfService.Client.Tabs
         {
             string path = Path + @"\" + fullPath;
 
-            form.textBoxFile.Text = "";
+            form.listBoxFile.Items.Clear();
             if (FileList.Contains(path))
             {
                 StopTailTask();
                 FilePath = path;
-                form.textBoxFile.Text = "";
+                Position = 0;
                 form.buttonDownload.Enabled = true;
                 form.buttonShow.Enabled = true;
                 form.buttonTail.Enabled = true;
@@ -264,7 +265,8 @@ namespace SelfService.Client.Tabs
                         using (WcfClient client = Helper.GetWcfClient(hostname))
                         {
                             var result = client.DownloadFile(filePath, position);
-                            form.textBoxFile.Invoke((MethodInvoker)delegate {
+                            form.Invoke((MethodInvoker)delegate
+                            {
                                 // Running on the UI thread
                                 form.SetStatusLabel(result.Success, result.Error);
                             });
@@ -278,9 +280,10 @@ namespace SelfService.Client.Tabs
                             {
                                 lastTimeStamp = DateTime.MinValue;
                                 position = 0;
-                                form.textBoxFile.Invoke((MethodInvoker)delegate {
+                                form.Invoke((MethodInvoker)delegate
+                                {
                                     // Running on the UI thread
-                                    form.textBoxFile.Text = "";
+                                    form.listBoxFile.Items.Clear();
                                     form.SetStatusLabel(result.Success, result.Error);
                                 });
                             }
@@ -296,9 +299,10 @@ namespace SelfService.Client.Tabs
                         }
 
                         // Carefully update
-                        form.textBoxFile.Invoke((MethodInvoker)delegate {
+                        form.Invoke((MethodInvoker)delegate
+                        {
                             // Running on the UI thread
-                            form.textBoxFile.Text += text;
+                            form.AddTextToListBoxFile(text);
                         });
                     }
                     else

@@ -24,6 +24,7 @@ namespace SelfService.Client
         public MainForm()
         {
             InitializeComponent();
+            ResizeObjects();
 
             // Machines we can contact
             listBoxMachines.Items.Clear();
@@ -79,6 +80,7 @@ namespace SelfService.Client
             {
                 UpdateServicesPage();
             }
+            ResizeObjects();
         }
 
         #region FilesTab
@@ -90,7 +92,7 @@ namespace SelfService.Client
 
         private void listBoxFileSources_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(listBoxFileSources.SelectedIndex == -1)
+            if (listBoxFileSources.SelectedIndex == -1)
             {
                 return;
             }
@@ -192,12 +194,83 @@ namespace SelfService.Client
 
         private void listBoxErrorMessages_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(listBoxErrorMessages.SelectedIndex == -1)
+            if (listBoxErrorMessages.SelectedIndex == -1)
             {
                 return;
             }
 
             textBoxErrorMessage.Text = LogMessages[listBoxErrorMessages.SelectedIndex];
+        }
+
+        internal void AddTextToListBoxFile(string text)
+        {
+            // Stop drawing
+            listBoxFile.BeginUpdate();
+
+            // Figure out if we are showing the last five lines
+            bool tailingFile = false;
+            int oldTopIndex = listBoxFile.TopIndex;
+            int lineheight = listBoxFile.ItemHeight;
+            int topIndex = listBoxFile.TopIndex;
+            int visibleLines = listBoxFile.Height / lineheight;
+            if (listBoxFile.Items.Count < 2)
+            {
+                tailingFile = true;
+            }
+            else if (listBoxFile.Items.Count - (topIndex + visibleLines) < 2)
+            {
+                tailingFile = true;
+            }
+
+            // Split text in lines, strip \r
+            string[] lines = text
+                .Split('\n')
+                .Select(x => x.TrimEnd('\r'))
+                .ToArray();
+
+            // If items exist the append first line to last of old content
+            int line = 0;
+            int itemCount = listBoxFile.Items.Count;
+            if (itemCount > 0)
+            {
+                listBoxFile.Items[itemCount - 1] += lines[0];
+                line++;
+            }
+
+            // now add rest of lines to box
+            for (; line < lines.Length; line++)
+            {
+                listBoxFile.Items.Add(lines[line]);
+            }
+
+            // move to the right position
+            if (tailingFile)
+            {
+                // + 2 for (int)height/lineHeight and 1 for 0 based index
+                topIndex = listBoxFile.Items.Count - visibleLines + 2;
+                if (topIndex < 0)
+                {
+                    topIndex = 0;
+                }
+                listBoxFile.TopIndex = topIndex;
+            }
+            else
+            {
+                listBoxFile.TopIndex = oldTopIndex;
+            }
+
+            // Draw again
+            listBoxFile.EndUpdate();
+        }
+
+        private void MainForm_Resize(object sender, EventArgs e)
+        {
+            ResizeObjects();
+        }
+
+        private void ResizeObjects()
+        {
+            listBoxFile.Height = splitContainer6.Panel2.Height - 33;
         }
     }
 }

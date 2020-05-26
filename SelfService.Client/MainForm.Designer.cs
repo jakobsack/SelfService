@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,7 +70,6 @@
             this.buttonTail = new System.Windows.Forms.Button();
             this.buttonShow = new System.Windows.Forms.Button();
             this.buttonDownload = new System.Windows.Forms.Button();
-            this.textBoxFile = new System.Windows.Forms.TextBox();
             this.tabPageServices = new System.Windows.Forms.TabPage();
             this.dataGridViewServices = new System.Windows.Forms.DataGridView();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,6 +79,7 @@
             this.splitContainer7 = new System.Windows.Forms.SplitContainer();
             this.listBoxErrorMessages = new System.Windows.Forms.ListBox();
             this.textBoxErrorMessage = new System.Windows.Forms.TextBox();
+            this.listBoxFile = new System.Windows.Forms.ListBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -272,6 +272,7 @@
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer2.Location = new System.Drawing.Point(3, 3);
             this.splitContainer2.Name = "splitContainer2";
             // 
@@ -283,7 +284,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainer2.Size = new System.Drawing.Size(1117, 707);
-            this.splitContainer2.SplitterDistance = 372;
+            this.splitContainer2.SplitterDistance = 380;
             this.splitContainer2.TabIndex = 0;
             // 
             // dataGridViewQueues
@@ -296,7 +297,7 @@
             this.dataGridViewQueues.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewQueues.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewQueues.Name = "dataGridViewQueues";
-            this.dataGridViewQueues.Size = new System.Drawing.Size(372, 707);
+            this.dataGridViewQueues.Size = new System.Drawing.Size(380, 707);
             this.dataGridViewQueues.TabIndex = 0;
             this.dataGridViewQueues.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewQueues_CellContentClick);
             // 
@@ -315,6 +316,7 @@
             // splitContainer3
             // 
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer3.Location = new System.Drawing.Point(0, 0);
             this.splitContainer3.Name = "splitContainer3";
             // 
@@ -325,8 +327,8 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.textBoxMessage);
-            this.splitContainer3.Size = new System.Drawing.Size(741, 707);
-            this.splitContainer3.SplitterDistance = 425;
+            this.splitContainer3.Size = new System.Drawing.Size(733, 707);
+            this.splitContainer3.SplitterDistance = 380;
             this.splitContainer3.TabIndex = 0;
             // 
             // dataGridViewMessages
@@ -340,7 +342,7 @@
             this.dataGridViewMessages.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewMessages.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewMessages.Name = "dataGridViewMessages";
-            this.dataGridViewMessages.Size = new System.Drawing.Size(425, 707);
+            this.dataGridViewMessages.Size = new System.Drawing.Size(380, 707);
             this.dataGridViewMessages.TabIndex = 0;
             this.dataGridViewMessages.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMessages_CellContentClick);
             // 
@@ -366,7 +368,7 @@
             this.textBoxMessage.Location = new System.Drawing.Point(0, 0);
             this.textBoxMessage.Multiline = true;
             this.textBoxMessage.Name = "textBoxMessage";
-            this.textBoxMessage.Size = new System.Drawing.Size(312, 707);
+            this.textBoxMessage.Size = new System.Drawing.Size(349, 707);
             this.textBoxMessage.TabIndex = 0;
             // 
             // tabPageRegistry
@@ -383,6 +385,7 @@
             // splitContainer4
             // 
             this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer4.Location = new System.Drawing.Point(3, 3);
             this.splitContainer4.Name = "splitContainer4";
             // 
@@ -394,7 +397,7 @@
             // 
             this.splitContainer4.Panel2.Controls.Add(this.dataGridViewRegistry);
             this.splitContainer4.Size = new System.Drawing.Size(1117, 707);
-            this.splitContainer4.SplitterDistance = 372;
+            this.splitContainer4.SplitterDistance = 450;
             this.splitContainer4.TabIndex = 0;
             // 
             // treeViewRegistryKeys
@@ -402,7 +405,7 @@
             this.treeViewRegistryKeys.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeViewRegistryKeys.Location = new System.Drawing.Point(0, 0);
             this.treeViewRegistryKeys.Name = "treeViewRegistryKeys";
-            this.treeViewRegistryKeys.Size = new System.Drawing.Size(372, 707);
+            this.treeViewRegistryKeys.Size = new System.Drawing.Size(450, 707);
             this.treeViewRegistryKeys.TabIndex = 0;
             this.treeViewRegistryKeys.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewRegistryKeys_AfterSelect);
             // 
@@ -415,19 +418,19 @@
             this.Column1,
             this.Column2,
             this.Column3});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewRegistry.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewRegistry.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewRegistry.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewRegistry.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewRegistry.Name = "dataGridViewRegistry";
             this.dataGridViewRegistry.ReadOnly = true;
-            this.dataGridViewRegistry.Size = new System.Drawing.Size(741, 707);
+            this.dataGridViewRegistry.Size = new System.Drawing.Size(663, 707);
             this.dataGridViewRegistry.TabIndex = 0;
             // 
             // Column1
@@ -462,6 +465,7 @@
             // splitContainer5
             // 
             this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer5.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer5.Location = new System.Drawing.Point(0, 0);
             this.splitContainer5.Name = "splitContainer5";
             // 
@@ -473,7 +477,7 @@
             // 
             this.splitContainer5.Panel2.Controls.Add(this.splitContainer6);
             this.splitContainer5.Size = new System.Drawing.Size(1123, 713);
-            this.splitContainer5.SplitterDistance = 374;
+            this.splitContainer5.SplitterDistance = 266;
             this.splitContainer5.TabIndex = 0;
             // 
             // listBoxFileSources
@@ -482,13 +486,14 @@
             this.listBoxFileSources.FormattingEnabled = true;
             this.listBoxFileSources.Location = new System.Drawing.Point(0, 0);
             this.listBoxFileSources.Name = "listBoxFileSources";
-            this.listBoxFileSources.Size = new System.Drawing.Size(374, 713);
+            this.listBoxFileSources.Size = new System.Drawing.Size(266, 713);
             this.listBoxFileSources.TabIndex = 0;
             this.listBoxFileSources.SelectedIndexChanged += new System.EventHandler(this.listBoxFileSources_SelectedIndexChanged);
             // 
             // splitContainer6
             // 
             this.splitContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer6.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer6.Location = new System.Drawing.Point(0, 0);
             this.splitContainer6.Name = "splitContainer6";
             // 
@@ -498,12 +503,12 @@
             // 
             // splitContainer6.Panel2
             // 
+            this.splitContainer6.Panel2.Controls.Add(this.listBoxFile);
             this.splitContainer6.Panel2.Controls.Add(this.buttonTail);
             this.splitContainer6.Panel2.Controls.Add(this.buttonShow);
             this.splitContainer6.Panel2.Controls.Add(this.buttonDownload);
-            this.splitContainer6.Panel2.Controls.Add(this.textBoxFile);
-            this.splitContainer6.Size = new System.Drawing.Size(745, 713);
-            this.splitContainer6.SplitterDistance = 247;
+            this.splitContainer6.Size = new System.Drawing.Size(853, 713);
+            this.splitContainer6.SplitterDistance = 266;
             this.splitContainer6.TabIndex = 0;
             // 
             // treeViewFiles
@@ -511,7 +516,7 @@
             this.treeViewFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeViewFiles.Location = new System.Drawing.Point(0, 0);
             this.treeViewFiles.Name = "treeViewFiles";
-            this.treeViewFiles.Size = new System.Drawing.Size(247, 713);
+            this.treeViewFiles.Size = new System.Drawing.Size(266, 713);
             this.treeViewFiles.TabIndex = 0;
             this.treeViewFiles.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewFiles_AfterSelect);
             // 
@@ -544,15 +549,6 @@
             this.buttonDownload.Text = "Download";
             this.buttonDownload.UseVisualStyleBackColor = true;
             this.buttonDownload.Click += new System.EventHandler(this.buttonDownload_Click);
-            // 
-            // textBoxFile
-            // 
-            this.textBoxFile.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textBoxFile.Location = new System.Drawing.Point(0, 37);
-            this.textBoxFile.Multiline = true;
-            this.textBoxFile.Name = "textBoxFile";
-            this.textBoxFile.Size = new System.Drawing.Size(494, 676);
-            this.textBoxFile.TabIndex = 0;
             // 
             // tabPageServices
             // 
@@ -645,6 +641,18 @@
             this.textBoxErrorMessage.TabIndex = 0;
             this.textBoxErrorMessage.WordWrap = false;
             // 
+            // listBoxFile
+            // 
+            this.listBoxFile.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.listBoxFile.FormattingEnabled = true;
+            this.listBoxFile.HorizontalScrollbar = true;
+            this.listBoxFile.IntegralHeight = false;
+            this.listBoxFile.Location = new System.Drawing.Point(0, 33);
+            this.listBoxFile.Name = "listBoxFile";
+            this.listBoxFile.ScrollAlwaysVisible = true;
+            this.listBoxFile.Size = new System.Drawing.Size(583, 680);
+            this.listBoxFile.TabIndex = 4;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -659,6 +667,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SelfService";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -695,7 +704,6 @@
             this.splitContainer5.ResumeLayout(false);
             this.splitContainer6.Panel1.ResumeLayout(false);
             this.splitContainer6.Panel2.ResumeLayout(false);
-            this.splitContainer6.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).EndInit();
             this.splitContainer6.ResumeLayout(false);
             this.tabPageServices.ResumeLayout(false);
@@ -753,7 +761,6 @@
         internal System.Windows.Forms.Button buttonTail;
         internal System.Windows.Forms.Button buttonShow;
         internal System.Windows.Forms.Button buttonDownload;
-        internal System.Windows.Forms.TextBox textBoxFile;
         private System.Windows.Forms.TabPage tabPageServices;
         internal System.Windows.Forms.DataGridView dataGridViewServices;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
@@ -763,6 +770,7 @@
         private System.Windows.Forms.SplitContainer splitContainer7;
         private System.Windows.Forms.ListBox listBoxErrorMessages;
         private System.Windows.Forms.TextBox textBoxErrorMessage;
+        internal System.Windows.Forms.ListBox listBoxFile;
     }
 }
 
