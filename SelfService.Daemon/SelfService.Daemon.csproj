@@ -53,6 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\GlobalVersionInfo.cs">
+      <Link>Properties\GlobalVersionInfo.cs</Link>
+    </Compile>
     <Compile Include="IWcf.cs" />
     <Compile Include="Model\Download.cs" />
     <Compile Include="Model\FileSource.cs" />
