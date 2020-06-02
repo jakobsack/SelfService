@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,9 +65,6 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageFiles = new System.Windows.Forms.TabPage();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
-            this.listBoxFileSources = new System.Windows.Forms.ListBox();
-            this.splitContainer6 = new System.Windows.Forms.SplitContainer();
-            this.treeViewFiles = new System.Windows.Forms.TreeView();
             this.listBoxFile = new System.Windows.Forms.ListBox();
             this.buttonTail = new System.Windows.Forms.Button();
             this.buttonShow = new System.Windows.Forms.Button();
@@ -80,6 +78,9 @@
             this.splitContainer7 = new System.Windows.Forms.SplitContainer();
             this.listBoxErrorMessages = new System.Windows.Forms.ListBox();
             this.textBoxErrorMessage = new System.Windows.Forms.TextBox();
+            this.listViewFileSources = new System.Windows.Forms.ListView();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.menuStripLocation = new System.Windows.Forms.MenuStrip();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -111,10 +112,6 @@
             this.splitContainer5.Panel1.SuspendLayout();
             this.splitContainer5.Panel2.SuspendLayout();
             this.splitContainer5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).BeginInit();
-            this.splitContainer6.Panel1.SuspendLayout();
-            this.splitContainer6.Panel2.SuspendLayout();
-            this.splitContainer6.SuspendLayout();
             this.tabPageServices.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewServices)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -161,7 +158,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.aboutToolStripMenuItem.Text = "About SelfService";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -418,14 +415,14 @@
             this.Column1,
             this.Column2,
             this.Column3});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewRegistry.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewRegistry.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewRegistry.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewRegistry.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewRegistry.Name = "dataGridViewRegistry";
@@ -455,6 +452,7 @@
             // tabPageFiles
             // 
             this.tabPageFiles.Controls.Add(this.splitContainer5);
+            this.tabPageFiles.Controls.Add(this.menuStripLocation);
             this.tabPageFiles.Location = new System.Drawing.Point(4, 22);
             this.tabPageFiles.Name = "tabPageFiles";
             this.tabPageFiles.Size = new System.Drawing.Size(1123, 713);
@@ -464,61 +462,24 @@
             // 
             // splitContainer5
             // 
-            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.splitContainer5.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer5.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer5.Location = new System.Drawing.Point(0, 40);
             this.splitContainer5.Name = "splitContainer5";
             // 
             // splitContainer5.Panel1
             // 
-            this.splitContainer5.Panel1.Controls.Add(this.listBoxFileSources);
+            this.splitContainer5.Panel1.Controls.Add(this.listViewFileSources);
             // 
             // splitContainer5.Panel2
             // 
-            this.splitContainer5.Panel2.Controls.Add(this.splitContainer6);
-            this.splitContainer5.Size = new System.Drawing.Size(1123, 713);
+            this.splitContainer5.Panel2.Controls.Add(this.listBoxFile);
+            this.splitContainer5.Panel2.Controls.Add(this.buttonTail);
+            this.splitContainer5.Panel2.Controls.Add(this.buttonShow);
+            this.splitContainer5.Panel2.Controls.Add(this.buttonDownload);
+            this.splitContainer5.Size = new System.Drawing.Size(1123, 673);
             this.splitContainer5.SplitterDistance = 266;
             this.splitContainer5.TabIndex = 0;
-            // 
-            // listBoxFileSources
-            // 
-            this.listBoxFileSources.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxFileSources.FormattingEnabled = true;
-            this.listBoxFileSources.Location = new System.Drawing.Point(0, 0);
-            this.listBoxFileSources.Name = "listBoxFileSources";
-            this.listBoxFileSources.Size = new System.Drawing.Size(266, 713);
-            this.listBoxFileSources.TabIndex = 0;
-            this.listBoxFileSources.SelectedIndexChanged += new System.EventHandler(this.listBoxFileSources_SelectedIndexChanged);
-            // 
-            // splitContainer6
-            // 
-            this.splitContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer6.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer6.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer6.Name = "splitContainer6";
-            // 
-            // splitContainer6.Panel1
-            // 
-            this.splitContainer6.Panel1.Controls.Add(this.treeViewFiles);
-            // 
-            // splitContainer6.Panel2
-            // 
-            this.splitContainer6.Panel2.Controls.Add(this.listBoxFile);
-            this.splitContainer6.Panel2.Controls.Add(this.buttonTail);
-            this.splitContainer6.Panel2.Controls.Add(this.buttonShow);
-            this.splitContainer6.Panel2.Controls.Add(this.buttonDownload);
-            this.splitContainer6.Size = new System.Drawing.Size(853, 713);
-            this.splitContainer6.SplitterDistance = 266;
-            this.splitContainer6.TabIndex = 0;
-            // 
-            // treeViewFiles
-            // 
-            this.treeViewFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewFiles.Location = new System.Drawing.Point(0, 0);
-            this.treeViewFiles.Name = "treeViewFiles";
-            this.treeViewFiles.Size = new System.Drawing.Size(266, 713);
-            this.treeViewFiles.TabIndex = 0;
-            this.treeViewFiles.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewFiles_AfterSelect);
             // 
             // listBoxFile
             // 
@@ -526,15 +487,15 @@
             this.listBoxFile.FormattingEnabled = true;
             this.listBoxFile.HorizontalScrollbar = true;
             this.listBoxFile.IntegralHeight = false;
-            this.listBoxFile.Location = new System.Drawing.Point(0, 33);
+            this.listBoxFile.Location = new System.Drawing.Point(0, 32);
             this.listBoxFile.Name = "listBoxFile";
             this.listBoxFile.ScrollAlwaysVisible = true;
-            this.listBoxFile.Size = new System.Drawing.Size(583, 680);
+            this.listBoxFile.Size = new System.Drawing.Size(853, 641);
             this.listBoxFile.TabIndex = 4;
             // 
             // buttonTail
             // 
-            this.buttonTail.Location = new System.Drawing.Point(168, 4);
+            this.buttonTail.Location = new System.Drawing.Point(165, 3);
             this.buttonTail.Name = "buttonTail";
             this.buttonTail.Size = new System.Drawing.Size(75, 23);
             this.buttonTail.TabIndex = 3;
@@ -544,7 +505,7 @@
             // 
             // buttonShow
             // 
-            this.buttonShow.Location = new System.Drawing.Point(86, 4);
+            this.buttonShow.Location = new System.Drawing.Point(84, 3);
             this.buttonShow.Name = "buttonShow";
             this.buttonShow.Size = new System.Drawing.Size(75, 23);
             this.buttonShow.TabIndex = 2;
@@ -554,7 +515,7 @@
             // 
             // buttonDownload
             // 
-            this.buttonDownload.Location = new System.Drawing.Point(4, 4);
+            this.buttonDownload.Location = new System.Drawing.Point(3, 3);
             this.buttonDownload.Name = "buttonDownload";
             this.buttonDownload.Size = new System.Drawing.Size(75, 23);
             this.buttonDownload.TabIndex = 1;
@@ -653,6 +614,35 @@
             this.textBoxErrorMessage.TabIndex = 0;
             this.textBoxErrorMessage.WordWrap = false;
             // 
+            // listViewFileSources
+            // 
+            this.listViewFileSources.AutoArrange = false;
+            this.listViewFileSources.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewFileSources.HideSelection = false;
+            this.listViewFileSources.Location = new System.Drawing.Point(0, 0);
+            this.listViewFileSources.MultiSelect = false;
+            this.listViewFileSources.Name = "listViewFileSources";
+            this.listViewFileSources.Size = new System.Drawing.Size(266, 673);
+            this.listViewFileSources.SmallImageList = this.imageList1;
+            this.listViewFileSources.TabIndex = 0;
+            this.listViewFileSources.UseCompatibleStateImageBehavior = false;
+            this.listViewFileSources.View = System.Windows.Forms.View.List;
+            this.listViewFileSources.SelectedIndexChanged += new System.EventHandler(this.listViewFileSources_SelectedIndexChanged);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // menuStripLocation
+            // 
+            this.menuStripLocation.Location = new System.Drawing.Point(0, 0);
+            this.menuStripLocation.Name = "menuStripLocation";
+            this.menuStripLocation.Size = new System.Drawing.Size(1123, 24);
+            this.menuStripLocation.TabIndex = 1;
+            this.menuStripLocation.Text = "menuStrip2";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -698,14 +688,11 @@
             this.splitContainer4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRegistry)).EndInit();
             this.tabPageFiles.ResumeLayout(false);
+            this.tabPageFiles.PerformLayout();
             this.splitContainer5.Panel1.ResumeLayout(false);
             this.splitContainer5.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
             this.splitContainer5.ResumeLayout(false);
-            this.splitContainer6.Panel1.ResumeLayout(false);
-            this.splitContainer6.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).EndInit();
-            this.splitContainer6.ResumeLayout(false);
             this.tabPageServices.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewServices)).EndInit();
             this.tabPage2.ResumeLayout(false);
@@ -755,12 +742,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.TabPage tabPageFiles;
         private System.Windows.Forms.SplitContainer splitContainer5;
-        internal System.Windows.Forms.ListBox listBoxFileSources;
-        private System.Windows.Forms.SplitContainer splitContainer6;
-        internal System.Windows.Forms.TreeView treeViewFiles;
-        internal System.Windows.Forms.Button buttonTail;
-        internal System.Windows.Forms.Button buttonShow;
-        internal System.Windows.Forms.Button buttonDownload;
         private System.Windows.Forms.TabPage tabPageServices;
         internal System.Windows.Forms.DataGridView dataGridViewServices;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
@@ -771,6 +752,12 @@
         private System.Windows.Forms.ListBox listBoxErrorMessages;
         private System.Windows.Forms.TextBox textBoxErrorMessage;
         internal System.Windows.Forms.ListBox listBoxFile;
+        internal System.Windows.Forms.Button buttonTail;
+        internal System.Windows.Forms.Button buttonShow;
+        internal System.Windows.Forms.Button buttonDownload;
+        internal System.Windows.Forms.ListView listViewFileSources;
+        private System.Windows.Forms.ImageList imageList1;
+        internal System.Windows.Forms.MenuStrip menuStripLocation;
     }
 }
 

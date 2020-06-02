@@ -2,9 +2,11 @@
 using SelfService.Lib;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
@@ -19,8 +21,9 @@ namespace SelfService.Client.Tabs
         private string Hostname = "";
         private MainForm form;
         private FileSource[] FileSources = null;
-        private string Path = "";
+        private string CurrentPath = "";
         private Folder Folder = null;
+        private Dictionary<string, List<string>> Siblings = new Dictionary<string, List<string>>();
         private List<string> FileList = new List<string>();
         private string FilePath = null;
         long Position = 0;
@@ -49,15 +52,133 @@ namespace SelfService.Client.Tabs
                 }
             }
 
-            StopTailTask();
-            form.listBoxFileSources.Items.Clear();
-            form.treeViewFiles.Nodes.Clear();
-            form.listBoxFile.Items.Clear();
-            DisableButtons();
+            FileList.Clear();
+            CurrentPath = "";
+            Siblings[CurrentPath] = FileSources.Select(x => x.Path).ToList();
+            RenderFileList();
+        }
 
-            foreach (FileSource fileSource in FileSources)
+        private void RenderFileList()
+        {
+            // First do some cleanup
+            Position = 0;
+            StopTailTask();
+            DisableButtons();
+            form.listViewFileSources.Items.Clear();
+            form.listBoxFile.Items.Clear();
+
+            if (CurrentPath == String.Empty)
             {
-                form.listBoxFileSources.Items.Add(fileSource.Path);
+                // No Path. We list the file sources
+                foreach (FileSource fileSource in FileSources)
+                {
+                    ListViewItem listViewItem = new ListViewItem(fileSource.Path, 0);
+                    form.listViewFileSources.Items.Add(listViewItem);
+                }
+            }
+            else if (Folder != null)
+            {
+                // We have a path and a folder. Render!
+                form.listViewFileSources.Items.Add(new ListViewItem("..", 1));
+                form.listViewFileSources.Items.Add(new ListViewItem(".", 2));
+
+                foreach (string folder in Folder.Folders)
+                {
+                    ListViewItem listViewItem = new ListViewItem(folder, 3);
+                    form.listViewFileSources.Items.Add(listViewItem);
+                }
+
+                foreach (string file in Folder.Files)
+                {
+                    ListViewItem listViewItem = new ListViewItem(file, 4);
+                    form.listViewFileSources.Items.Add(listViewItem);
+                }
+            }
+
+            ResetLocationBar();
+        }
+
+        internal void SelectItem(ListViewItem listViewItem)
+        {
+            // Get the new path the user requests
+            string newPath = CurrentPath == "" ? listViewItem.Text : System.IO.Path.Combine(CurrentPath, listViewItem.Text);
+
+            if(listViewItem.Text == ".")
+            {
+                // We simply update the folder
+                GetFolder(CurrentPath);
+            }
+            else if(listViewItem.Text == "..")
+            {
+                // We want to go one folder up
+                string newFolder = System.IO.Path.GetDirectoryName(CurrentPath);
+
+                if (!FileSources.Any(x => newFolder.StartsWith(x.Path)))
+                {
+                    // We are at top level again. Refetch 
+                    GetFileSources(Hostname);
+                }
+                else
+                {
+                    // Get parent directory
+                    GetFolder(newFolder);
+                }
+            }
+            else if (FileList.Contains(newPath))
+            {
+                SelectFile(newPath);
+            }
+            else
+            {
+                GetFolder(newPath);
+            }
+        }
+
+        private void ResetLocationBar()
+        {
+            form.menuStripLocation.Items.Clear();
+            form.menuStripLocation.Items.Add("You are here:");
+
+            if(CurrentPath == "")
+            {
+                return;
+            }
+
+            string menuPath = "";
+            while (true)
+            {
+                if (!Siblings.ContainsKey(menuPath))
+                {
+                    return;
+                }
+
+                string part = Siblings[menuPath].FirstOrDefault(x => CurrentPath == Path.Combine(menuPath, x) || CurrentPath.StartsWith(Path.Combine(menuPath, x) + Path.DirectorySeparatorChar)); 
+                if (string.IsNullOrEmpty(part)){
+                    return;
+                }
+
+                ToolStripMenuItem item = new ToolStripMenuItem();
+                item.Text = part;
+                item.Tag = Path.Combine(menuPath, part);
+
+                foreach (string alternative in Siblings[menuPath])
+                {
+                    ToolStripMenuItem subitem = new ToolStripMenuItem();
+                    subitem.Text = alternative;
+                    subitem.Tag = Path.Combine(menuPath, alternative);
+                    subitem.Click += new System.EventHandler(form.JumpToFolder);
+                    if(alternative == part)
+                    {
+                        subitem.Font = new Font(subitem.Font, FontStyle.Bold);
+                    }
+
+                    item.DropDownItems.Add(subitem);
+                }
+
+                form.menuStripLocation.Items.Add(item);
+
+                // Last step: itrerate
+                menuPath = Path.Combine(menuPath, part);
             }
         }
 
@@ -70,13 +191,7 @@ namespace SelfService.Client.Tabs
 
         internal void GetFolder(string path)
         {
-            Path = path;
-
-            StopTailTask();
-            form.treeViewFiles.Nodes.Clear();
-            form.listBoxFile.Items.Clear();
-            DisableButtons();
-            Position = 0;
+            CurrentPath = path;
 
             using (WcfClient client = Helper.GetWcfClient(Hostname))
             {
@@ -85,6 +200,9 @@ namespace SelfService.Client.Tabs
                 if (result.Success)
                 {
                     Folder = result.Data;
+
+                    FileList = Folder.Files.Select(x => Path.Combine(CurrentPath, x)).ToList();
+                    Siblings[CurrentPath] = Folder.Folders.ToList();
                 }
                 else
                 {
@@ -92,16 +210,7 @@ namespace SelfService.Client.Tabs
                 }
             }
 
-            if (Folder == null)
-            {
-                return;
-            }
-
-            TreeNode rootNode = GetFolderyNode(Folder);
-            foreach (TreeNode node in rootNode.Nodes)
-            {
-                form.treeViewFiles.Nodes.Add(node);
-            }
+            RenderFileList();
         }
 
         internal void StartTailTask()
@@ -190,42 +299,14 @@ namespace SelfService.Client.Tabs
 
         internal void SelectFile(string fullPath)
         {
-            string path = Path + @"\" + fullPath;
-
             form.listBoxFile.Items.Clear();
-            if (FileList.Contains(path))
-            {
-                StopTailTask();
-                FilePath = path;
-                Position = 0;
-                form.buttonDownload.Enabled = true;
-                form.buttonShow.Enabled = true;
-                form.buttonTail.Enabled = true;
-            }
-            else
-            {
-                DisableButtons();
-            }
-        }
 
-        private TreeNode GetFolderyNode(Folder folder)
-        {
-            TreeNode treeNode = new TreeNode
-            {
-                Text = System.IO.Path.GetFileName(folder.Name),
-            };
-
-            foreach (Folder child in folder.Folders)
-            {
-                treeNode.Nodes.Add(GetFolderyNode(child));
-            }
-
-            foreach (string fileName in folder.Files)
-            {
-                treeNode.Nodes.Add(System.IO.Path.GetFileName(fileName));
-                FileList.Add(fileName);
-            }
-            return treeNode;
+            StopTailTask();
+            FilePath = fullPath;
+            Position = 0;
+            form.buttonDownload.Enabled = true;
+            form.buttonShow.Enabled = true;
+            form.buttonTail.Enabled = true;
         }
 
         private static byte[] UncompressData(byte[] rawBytes)

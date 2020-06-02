@@ -73,12 +73,25 @@ namespace SelfService.Daemon.Provider
             try
             {
                 string[] paths = ListFileSources();
-                if (!paths.Contains(path))
+                if (!paths.Any(x => path.StartsWith(x)))
                 {
                     throw new Exception("Requested folder is not part of the allowed ones.");
                 }
 
-                Folder folder = GetFolderContent(path);
+                Folder folder = new Folder
+                {
+                    Name = path,
+                };
+
+                foreach (string fileName in Directory.GetFiles(path))
+                {
+                    folder.Files.Add(Path.GetFileName(fileName));
+                }
+
+                foreach (string folderName in Directory.GetDirectories(path))
+                {
+                    folder.Folders.Add(Path.GetFileName(folderName));
+                }
 
                 result.Data = folder;
             }
@@ -89,34 +102,6 @@ namespace SelfService.Daemon.Provider
             }
 
             return result;
-        }
-
-        private static Folder GetFolderContent(string path)
-        {
-            Folder folder = new Folder
-            {
-                Name = path,
-            };
-
-            foreach (string fileName in Directory.GetFiles(path))
-            {
-                folder.Files.Add(fileName);
-            }
-
-            foreach (string folderName in Directory.GetDirectories(path))
-            {
-                try
-                {
-                    folder.Folders.Add(GetFolderContent(folderName));
-                }
-                catch
-                {
-                    // NOOP. Let's hope the other folders go well.
-                }
-
-            }
-
-            return folder;
         }
 
         internal static Result<Download> DownloadFile(string path, long offset)

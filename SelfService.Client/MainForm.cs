@@ -26,6 +26,13 @@ namespace SelfService.Client
             InitializeComponent();
             ResizeObjects();
 
+            // Load Icons from Shell32
+            imageList1.Images.Add(Helper.ExtractIcon("shell32.dll", 124, false));
+            imageList1.Images.Add(Helper.ExtractIcon("shell32.dll", 45, false));
+            imageList1.Images.Add(Helper.ExtractIcon("shell32.dll", 238, false));
+            imageList1.Images.Add(Helper.ExtractIcon("shell32.dll", 3, false));
+            imageList1.Images.Add(Helper.ExtractIcon("shell32.dll", 0, false));
+
             // Machines we can contact
             listBoxMachines.Items.Clear();
             string[] machines = File.ReadAllLines("machines.txt");
@@ -80,31 +87,33 @@ namespace SelfService.Client
             {
                 UpdateServicesPage();
             }
+
+
             ResizeObjects();
         }
 
         #region FilesTab
-        private void UpdateFilesPage()
+        private void listViewFileSources_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string hostname = listBoxMachines.SelectedItem.ToString();
-            FilesTab.GetFileSources(hostname);
-        }
-
-        private void listBoxFileSources_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listBoxFileSources.SelectedIndex == -1)
+            // Don't do anything on empty list
+            if(listViewFileSources.SelectedIndices.Count == 0)
             {
                 return;
             }
 
-            string path = listBoxFileSources.SelectedItem.ToString();
-            FilesTab.GetFolder(path);
+            FilesTab.SelectItem(listViewFileSources.SelectedItems[0]);
         }
 
-        private void treeViewFiles_AfterSelect(object sender, TreeViewEventArgs e)
+        internal void JumpToFolder(object sender, EventArgs e)
         {
-            TreeNode treeNode = e.Node;
-            FilesTab.SelectFile(treeNode.FullPath);
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+            FilesTab.GetFolder(item.Tag as string);
+        }
+
+        private void UpdateFilesPage()
+        {
+            string hostname = listBoxMachines.SelectedItem.ToString();
+            FilesTab.GetFileSources(hostname);
         }
 
         private void buttonDownload_Click(object sender, EventArgs e)
@@ -270,7 +279,8 @@ namespace SelfService.Client
 
         private void ResizeObjects()
         {
-            listBoxFile.Height = splitContainer6.Panel2.Height - 33;
+            listBoxFile.Height = splitContainer5.Panel2.Height - 33;
+            splitContainer5.Height = tabPageFiles.Height - 33;
         }
     }
 }

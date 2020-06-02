@@ -873,7 +873,7 @@ namespace SelfService.Client.WcfServiceReference {
         private string[] FilesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SelfService.Client.WcfServiceReference.Folder[] FoldersField;
+        private string[] FoldersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
@@ -902,7 +902,7 @@ namespace SelfService.Client.WcfServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SelfService.Client.WcfServiceReference.Folder[] Folders {
+        public string[] Folders {
             get {
                 return this.FoldersField;
             }
