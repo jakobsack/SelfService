@@ -67,6 +67,7 @@
             this.listBoxFileSources = new System.Windows.Forms.ListBox();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
             this.treeViewFiles = new System.Windows.Forms.TreeView();
+            this.listBoxFile = new System.Windows.Forms.ListBox();
             this.buttonTail = new System.Windows.Forms.Button();
             this.buttonShow = new System.Windows.Forms.Button();
             this.buttonDownload = new System.Windows.Forms.Button();
@@ -79,7 +80,6 @@
             this.splitContainer7 = new System.Windows.Forms.SplitContainer();
             this.listBoxErrorMessages = new System.Windows.Forms.ListBox();
             this.textBoxErrorMessage = new System.Windows.Forms.TextBox();
-            this.listBoxFile = new System.Windows.Forms.ListBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -161,8 +161,8 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.aboutToolStripMenuItem.Text = "About ServiceDesk";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Text = "About SelfService";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // statusStrip1
@@ -520,6 +520,18 @@
             this.treeViewFiles.TabIndex = 0;
             this.treeViewFiles.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewFiles_AfterSelect);
             // 
+            // listBoxFile
+            // 
+            this.listBoxFile.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.listBoxFile.FormattingEnabled = true;
+            this.listBoxFile.HorizontalScrollbar = true;
+            this.listBoxFile.IntegralHeight = false;
+            this.listBoxFile.Location = new System.Drawing.Point(0, 33);
+            this.listBoxFile.Name = "listBoxFile";
+            this.listBoxFile.ScrollAlwaysVisible = true;
+            this.listBoxFile.Size = new System.Drawing.Size(583, 680);
+            this.listBoxFile.TabIndex = 4;
+            // 
             // buttonTail
             // 
             this.buttonTail.Location = new System.Drawing.Point(168, 4);
@@ -640,18 +652,6 @@
             this.textBoxErrorMessage.Size = new System.Drawing.Size(930, 739);
             this.textBoxErrorMessage.TabIndex = 0;
             this.textBoxErrorMessage.WordWrap = false;
-            // 
-            // listBoxFile
-            // 
-            this.listBoxFile.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.listBoxFile.FormattingEnabled = true;
-            this.listBoxFile.HorizontalScrollbar = true;
-            this.listBoxFile.IntegralHeight = false;
-            this.listBoxFile.Location = new System.Drawing.Point(0, 33);
-            this.listBoxFile.Name = "listBoxFile";
-            this.listBoxFile.ScrollAlwaysVisible = true;
-            this.listBoxFile.Size = new System.Drawing.Size(583, 680);
-            this.listBoxFile.TabIndex = 4;
             // 
             // MainForm
             // 
